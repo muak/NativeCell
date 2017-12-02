@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+    xmlns:c="clr-namespace:Sample.Cells;assembly=Sample"
+	prism:ViewModelLocator.AutowireViewModel="True" 
+	x:Class="Sample.Views.MainPage" Title="MainPage">
+    <ListView HasUnevenRows="true" ItemsSource="{Binding ItemsSource}" x:Name="listview">
+        <x:Arguments>
+            <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+        </x:Arguments>
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <c:CustomCell Title="{Binding Name}" TitleColor="Black" Command="{Binding BindingContext.Command,Source={x:Reference listview}}" />
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>
